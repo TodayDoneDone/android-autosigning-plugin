@@ -1,6 +1,6 @@
 # android-autosigning-plugin
 
-A Gradle plugin that automatically sets release signingConfigs when the given keystore is valid.
+A Gradle plugin that automatically sets `release` signingConfigs when the given keystore is valid.
 
 ---
 
