@@ -10,12 +10,31 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.7.21"
     `kotlin-dsl`
+    // `maven-publish`
     `java-gradle-plugin`
     id("com.vanniktech.maven.publish") version "0.22.0"
 }
 
+// group = "land.sungbin.android.autosigning"
+// version = "1.0.4"
+
 repositories {
+    google()
     mavenCentral()
+}
+
+gradlePlugin {
+    plugins {
+        create("autoSigningPlugin") {
+            id = "land.sungbin.android.autosigning.plugin"
+            implementationClass = "AutoSigningPlugin"
+        }
+    }
+}
+
+dependencies {
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.21")
+    implementation("com.android.tools.build:gradle:8.0.0-alpha08")
 }
 
 tasks.withType<KotlinCompile> {
