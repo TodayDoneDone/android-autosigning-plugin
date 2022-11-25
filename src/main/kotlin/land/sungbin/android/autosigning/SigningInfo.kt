@@ -14,23 +14,21 @@ import java.io.File
 @AutoSigningPluginDsl
 open class SigningInfo {
     /**
-     * The path to the keystore file.
+     * The path to the secret file.
      */
-    open lateinit var keystorePath: String
+    open lateinit var secretPath: String
 
-    private lateinit var keystoreSecretsLambda: (keystoreFile: File) -> KeystoreSecrets
+    private lateinit var keystoreSecretsLambda: (secretFile: File) -> KeystoreSecrets
 
     /**
      * Lambda to get [KeystoreSecrets].
-     *
-     * keystoreSecrets - param: keystoreFile The keystore file.
      */
-    fun keystoreSecrets(keystoreSecrets: (keystoreFile: File) -> KeystoreSecrets) {
-        keystoreSecretsLambda = keystoreSecrets
+    fun keystoreSecrets(builder: (secretFile: File) -> KeystoreSecrets) {
+        keystoreSecretsLambda = builder
     }
 
-    internal operator fun component1() = keystorePath
+    internal operator fun component1() = secretPath
     internal operator fun component2() = keystoreSecretsLambda
 
-    internal fun isInit() = ::keystorePath.isInitialized && ::keystoreSecretsLambda.isInitialized
+    internal fun isInit() = ::secretPath.isInitialized && ::keystoreSecretsLambda.isInitialized
 }
