@@ -5,4 +5,7 @@
  * Please see full license: https://github.com/duckie-team/android-autosigning-plugin/blob/main/LICENSE
  */
 
-rootProject.name = "android-autosigning-plugin"
+package land.sungbin.android.autosigning
+
+@DslMarker
+internal annotation class AutoSigningPluginDsl
