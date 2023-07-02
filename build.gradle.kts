@@ -12,7 +12,7 @@ plugins {
     `kotlin-dsl`
     // `maven-publish`
     `java-gradle-plugin`
-    id("com.vanniktech.maven.publish") version "0.22.0"
+    id("com.vanniktech.maven.publish") version "0.25.3"
 }
 
 // group = "land.sungbin.android.autosigning"
